@@ -1,0 +1,1 @@
+python .\idf_monitor.py --port \\.\COM6 --baud 115200 .\rtthread.elf
