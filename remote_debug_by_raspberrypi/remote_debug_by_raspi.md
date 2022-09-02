@@ -1,4 +1,4 @@
-嵌入式远程调试小技巧
+# 嵌入式远程调试小技巧
 ## *tricks of embedded device remote debug*
 
 # 背景
@@ -53,7 +53,7 @@
     <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/3.png" width="80%">  
 
     - 至此，我们已经完成了所有的配置，并可以愉快的调试和下载了！
-- ## 3. 结果
+# 结果
   当我们配置完成后，就可以像本地连接设备一样轻松调试了，如下载，在线断点调试等等。。
 
   - 下载固件：  
@@ -63,7 +63,7 @@
   <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/5.png" width="80%">  
 
   - 串口调试：   
-  <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/6.png" width="90%">  
+  <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/6.png" width="80%">  
 
     如果需要查看串口数据也很简单，我们只需要利用linux的命令行即可，只需将你的串口转usb工具接上，在树莓派上 ch340,cp21xx免驱，将会自动识别成ttyUSB设备。  
     在本地登录树莓派终端并执行： 
@@ -71,6 +71,15 @@
     `stty -F /dev/ttyUSB1 ispeed 115200 ospeed 115200 cs8 igncr`   
     - 打开串口：
     `cat /dev/ttyUSB0`
+  - JFlash等工具连接：所有工具均支持远程方式连接。
+  <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/9.png" width="80%"> 
 
-- ## 4.总结
-- 
+# 总结
+  - 该解决方案其实是之前笔者购买m1 macbook作为主力机时，windows虚拟机未支持winusb驱动的jlink而琢磨出来的方法，在macos中运行JLinkRemoteServer,在虚拟机中的keil去连接，从而解决了驱动不兼容问题。btw，m1的macbook是真的香，续航强性能够，笔者所用到的调试硬件驱动都能有办法装上，作为主力机完全无问题，在外调试一天可不用带充电器。  
+
+  - 有些人可能会说，市场上不是有一些无线调试器吗？确实有这样的产品，但这些产品基本是视距范围的传输，如无线版的daplink，存在一定局限性，而在本方案中，只要你能想办法连上网，无论你在哪都能调，而且还支持串口调试等功能。甚至你可以进阶，安装远程usb端口映射软件，实现usb端口的转发，从而连接更多设备。  
+  
+  - 同时，我们可以讲树莓派作为测试夹具，通过编写简单的代码，即可实现远程视频监控，控制设备上下电，模拟io状态，与仪表（如示波器，频谱仪，可调电源）联动，实现自动化测试流。
+
+
+    关注微信公众号『EmbeddedTechTips』，后台回复“微信”添加作者微信，欢迎交流！
