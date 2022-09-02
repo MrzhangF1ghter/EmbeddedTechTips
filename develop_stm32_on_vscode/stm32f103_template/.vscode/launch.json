@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Cortex Debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/build/stm32f103_template.elf",//elf文件名称，请根据实际填写
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "jlink",//调试器类型
+            "interface": "swd",//调试器接口
+            "device": "STM32F103C8",//MCU型号
+        },
+    ]
+}
