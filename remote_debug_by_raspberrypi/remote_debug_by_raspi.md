@@ -55,6 +55,22 @@
     - 至此，我们已经完成了所有的配置，并可以愉快的调试和下载了！
 - ## 3. 结果
   当我们配置完成后，就可以像本地连接设备一样轻松调试了，如下载，在线断点调试等等。。
-  <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/8.png" width="80%">  
 
+  - 下载固件：  
+  <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/8.png" width="80%">   
+
+  - 在线调试：  
   <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/5.png" width="80%">  
+
+  - 串口调试：   
+  <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/6.png" width="90%">  
+
+    如果需要查看串口数据也很简单，我们只需要利用linux的命令行即可，只需将你的串口转usb工具接上，在树莓派上 ch340,cp21xx免驱，将会自动识别成ttyUSB设备。  
+    在本地登录树莓派终端并执行： 
+    - 配置打开串口波特率为115200：   
+    `stty -F /dev/ttyUSB1 ispeed 115200 ospeed 115200 cs8 igncr`   
+    - 打开串口：
+    `cat /dev/ttyUSB0`
+
+- ## 4.总结
+- 
