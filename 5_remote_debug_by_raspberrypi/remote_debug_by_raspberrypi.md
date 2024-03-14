@@ -36,34 +36,34 @@
   jlink套件默认会安装到`/opt/SEGGER/JLink_xxx` 目录下。
 
   - 连接jlink及usb串口*(若需要)   
-  <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/11.jpeg" width="80%">   
+  <img src="./assert/11.jpeg" width="80%">   
 
   - 登录树莓派的远程桌面，打开jlink套件安装文件目录.
-  <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/1.png" width="80%">  
+  <img src="./assert/1.png" width="80%">  
 
   -  双击运行`JLinkRemoteServerExe`，若显示ip，则显示jlink连接成功，若弹框提示无识别到jlink，请检查硬件连接。记录下该ip，该ip就是我们远程连接jlink的ip。
-  <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/2.png" width="80%">  
+  <img src="./assert/2.png" width="80%">  
 
 - ### 2.2 本地端配置
     在本地电脑启动ide/gdb server，本文以keil ide为例。
     - 打开options->Debug,选择Use J-LINK/J-TRACE Cortex,并点击settings
-    <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/4.png" width="80%">  
+    <img src="./assert/4.png" width="80%">  
 
     - 在弹出的Driver Setup窗口中,找到interface,选择TCP/IP,并填入刚才远程端`JLinkRemoteServer`中显示的ip及端口。并点击ping按钮测试是否ping通。若无意外，device栏将会显示连接的目标设备。若无显示，请检查port选项是否选择对，适当降低时钟频率（特别是网络较差的环境下）。
-    <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/3.png" width="80%">  
+    <img src="./assert/3.png" width="80%">  
 
     - 至此，我们已经完成了所有的配置，并可以愉快的调试和下载了！
 # 结果
   当我们配置完成后，就可以像本地连接设备一样轻松调试了，如下载，在线断点调试等等。。
 
   - 下载固件：  
-  <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/8.png" width="80%">   
+  <img src="./assert/8.png" width="80%">   
 
   - 在线调试：  
-  <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/5.png" width="80%">  
+  <img src="./assert/5.png" width="80%">  
 
   - 串口调试：   
-  <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/6.png" width="80%">  
+  <img src="./assert/6.png" width="80%">  
 
     如果需要查看串口数据也很简单，我们只需要利用linux的命令行即可，只需将你的串口转usb工具接上，在树莓派上 ch340,cp21xx免驱，将会自动识别成ttyUSB设备。  
     在本地登录树莓派终端并执行： 
@@ -72,7 +72,7 @@
     - 打开串口：
     `cat /dev/ttyUSB0`
   - JFlash等工具连接：所有工具均支持远程方式连接。
-  <img src="https://raw.githubusercontent.com/MrzhangF1ghter/EmbeddedTechTips/master/remote_debug_by_raspberrypi/pic/9.png" width="80%"> 
+  <img src="./assert/9.png" width="80%"> 
 
 # 总结
   - 该解决方案其实是之前笔者购买m1 macbook作为主力机时，windows虚拟机未支持winusb驱动的jlink而琢磨出来的方法，在macos中运行JLinkRemoteServer,在虚拟机中的keil去连接，从而解决了驱动不兼容问题。btw，m1的macbook是真的香，续航强性能够，笔者所用到的调试硬件驱动都能有办法装上，作为主力机完全无问题，在外调试一天可不用带充电器。  
